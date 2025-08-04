@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+.active {
+  text-decoration-line: underline;
+  text-decoration-color: aqua;
+  padding: 10px;
+}
