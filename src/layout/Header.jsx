@@ -67,7 +67,7 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link to="/"> Project 3 times a Day</Link>
+            <Link to="/"> ProductsAPI</Link>
           </Typography>
           <Search>
             <TextField
