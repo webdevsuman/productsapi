@@ -2,20 +2,34 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchProductDetails } from "../queryFunctions/queryFunctions";
-import { Button, Paper, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Paper, Typography } from "@mui/material";
 import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const { id } = useParams();
   // console.log(id);
 
-  const { data: productDetails } = useQuery({
+  const { data: productDetails,isLoading } = useQuery({
     queryKey: ["productDetails"],
     queryFn: () => fetchProductDetails(id),
   });
 
   // console.log(productDetails);
 
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress size={100} />
+      </Box>
+    );
+  } else {
   return (
     <div className="flex flex-col items-center capitalize p-10">
       <Typography className="!mb-3" variant="body1">
@@ -79,7 +93,7 @@ const ProductDetails = () => {
         </div>
       </Paper>
     </div>
-  );
+  );}
 };
 
 export default ProductDetails;
